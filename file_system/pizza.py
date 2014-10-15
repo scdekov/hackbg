@@ -9,6 +9,7 @@ def main():
     list_orders = []
     used_commands = []
     counter = 0
+    sec_counter = 0
     while (True):
         command = input("Enter command>").split()
         used_commands.append(command)
@@ -43,8 +44,8 @@ def main():
                     file = open(list_orders[command[1]])
         elif command[0] == "finish":
             if stamp not in list_orders:
-                if counter == 0:
-                    counter = 1
+                if sec_counter == 0:
+                    sec_counter = 1
                     print ("You have not saved your order./n If you wish to continue, type finish again. /n If you want to save your order, type save")
                 else:
                     break
