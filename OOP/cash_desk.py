@@ -9,10 +9,12 @@ class Cash_desk(object):
     def total(self):
         sum = 0
         for el in self.money:
+            if self.money[el] < 0:
+                return False
             sum += el * self.money[el]
         return sum
 
-    def _rec(self, money_arr, summ):
+    def rec(self, money_arr, summ):
         flag = False
         if summ == 0:
             flag = True
@@ -21,7 +23,7 @@ class Cash_desk(object):
                 for el in money_arr:
                     if summ - el >= 0:
                         money_arr.remove(el)
-                        return self._rec(money_arr, summ - el)
+                        return self.rec(money_arr, summ - el)
         return flag
 
     def can_withdraw_money(self, summ):
@@ -31,16 +33,4 @@ class Cash_desk(object):
                 money_arr.append(el)
         money_arr = sorted(money_arr)
         money_arr = money_arr[::-1]
-        return self._rec(money_arr, summ)
-
-
-def main():
-    my_cash_desk = Cash_desk()
-    my_cash_desk.take_money({1: 2, 50: 1, 20: 1})
-    print (my_cash_desk.total())
-    print (my_cash_desk.can_withdraw_money(30))
-    print (my_cash_desk.can_withdraw_money(70))
-
-
-if __name__ == '__main__':
-    main()
+        return self.rec(money_arr, summ)
