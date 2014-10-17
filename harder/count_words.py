@@ -7,4 +7,3 @@ def count_words(arr):
             dic[word] = 1
     return dic
 
-print (count_words(["apple", "banana", "apple", "pie"]))
