@@ -1,17 +1,14 @@
 import sys
 
 
-def main():
+def wc():
     file = open(sys.argv[2], "r")
     content = file.read()
     if sys.argv[1] == "chars":
-        print (len(content))
+        return (len(content))
     elif sys.argv[1] == "words":
         content = content.split(" ")
-        print (len(content))
+        return (len(content))
     elif sys.argv[1] == "lines":
         file.close()
-        print (len(open(sys.argv[2]).readlines()) + 1)
-
-if __name__ == '__main__':
-    main()
+        return (len(open(sys.argv[2]).readlines()) + 1)
