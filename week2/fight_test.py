@@ -5,7 +5,7 @@ from hero import Hero
 from weapon import Weapon
 
 
-class Test_Fight(unittest_TestCase):
+class Test_Fight(unittest.TestCase):
     def setUp(self):
         self.orc = Orc("orc", 90, 1.4)
         self.hero = Hero("hero", 100, "DragonSlayer")
@@ -19,4 +19,15 @@ class Test_Fight(unittest_TestCase):
 
     def test_simulate_fight(self):
         self.fight.simulate_fight()
+        self.assertTrue(self.orc.health == 0 or self.hero.health == 0)
+
+    def test_flip_coin(self):
+        results = set()
+        for i in range(100):
+            results.add(self.fight._flip_coin())
+        self.assertEqual(len(results), 2)
+
+
+if __name__ == '__main__':
+    unittest.main()
 
