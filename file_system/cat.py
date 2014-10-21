@@ -2,11 +2,9 @@ import sys
 
 
 
-def main():
+def cat():
     filename = sys.argv[1]
     file = open(filename, "r")
     content = file.read()
-    print (content)
+    return (content)
 
-if __name__ == '__main__':
-    main()
