@@ -65,6 +65,7 @@ class Dungeon():
                         self.map[i] = '.'
                         self.heroes.pop(i)
                     self.map = "".join(self.map)
+
                     return True
 
                 elif self.map[i + step] == '\n':

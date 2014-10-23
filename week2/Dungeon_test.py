@@ -71,17 +71,19 @@ class Test_dungeon(unittest.TestCase):
         self.assertEqual(self.dungeon.map, self.dung_map)
 
     def test_move_fight(self):
-        self.dungeon.map = """SO##......
+        self.dungeon.map = """SS##......
 #.##..###
 #.###.###.
 #.....###
 ###.####S"""
         self.dungeon.spawn("hero", self.bron)
+        self.dungeon.spawn("orc", self.orc)
         self.dung_map = """.O##......
 #.##..###
 #.###.###.
 #.....###
 ###.####S"""
+        self.dungeon.move("hero", "right")
         self.assertEqual(self.dungeon.map, self.dung_map)
 
     def tearDown(self):
