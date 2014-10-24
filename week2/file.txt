@@ -1,0 +1,1 @@
+{"name": "first", "songs": [{"artist": "artist", "bitrate": 256, "length": 200, "title": "title", "rating": 4, "album": "album"}, {"artist": "dlg", "bitrate": 20, "length": 150, "title": "beat", "rating": 2, "album": "hrdlg"}]}

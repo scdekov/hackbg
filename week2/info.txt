@@ -1,0 +1,1 @@
+{"title": "title", "rating": 4, "artist": "artist", "length": 200, "bitrate": 256, "album": "album"}{"title": "beat", "rating": 2, "artist": "dlg", "length": 150, "bitrate": 20, "album": "hrdlg"}

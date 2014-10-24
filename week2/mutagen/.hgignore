@@ -1,0 +1,7 @@
+syntax: glob
+*.pyc
+docs/_build
+dist
+coverage/*.cover
+MANIFEST
+coverage
