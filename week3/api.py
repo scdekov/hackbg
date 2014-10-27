@@ -1,5 +1,6 @@
 import requests
 import json
+from random import shuffle
 
 
 api = requests.get("https://hackbulgaria.com/api/students/", verify=False)
@@ -37,6 +38,7 @@ def match_teams(course_id, team_size, group_time):
                 persons.append(person["name"])
                 break
     counter = 0
+    shuffle(persons)
     for i in range(len(persons)):
         if counter == team_size:
             print("=========================")
@@ -47,4 +49,4 @@ def match_teams(course_id, team_size, group_time):
 
 print (list_all_courses())
 
-print (match_teams(4, 2, 2))
+print (match_teams(4, 3, 2))
