@@ -1,6 +1,7 @@
 import json
 from song import Song
 from mutagen.mp3 import MP3
+from mutagen.easyid3 import EasyID3
 
 
 class Playlist():
@@ -45,7 +46,7 @@ class Playlist():
     def __str__(self):
         result = ""
         for song in self.songs:
-            result += "{} {} - {}\n".format(song.artist, song.title, "{}:{}".format(song.length // 60, song.length % 60))
+            result += "{} {} - {}\n".format(song.artist, song.title, "{}:{}".format(int(song.length // 60), int(song.length % 60)))
         return result
 
     def save(self, filename):
@@ -80,8 +81,8 @@ def main():
     playlist2 = Playlist("second")
     playlist2.load("file.txt")
     print(playlist2)
-    audio = MP3("SPENS feat  GOODSLAV   НОВАТА ВЪЛНА [ Official HD Video ].mp3")
-    print(audio['TDEN'])
+    audio = MP3("juicy-j-wiz-khalifa-ty-dolla-ign-shell-shocked-95321087.mp3", ID3=EasyID3)
+    print(audio["artist"][0], audio["title"][0])
 
 
 
