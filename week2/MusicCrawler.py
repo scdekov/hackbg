@@ -10,8 +10,11 @@ from mutagen.easyid3 import EasyID3
 class MusicCrawler():
 
     def __init__(self, path):
+        self.path = path
+
+    def generate_playlist(self):
         playlist = Playlist("newList")
-        os.chdir(path)
+        os.chdir(self.path)
         for songa in glob.glob("*.mp3"):
             song = MP3(songa, ID3=EasyID3)
             try:
@@ -26,6 +29,7 @@ class MusicCrawler():
 def main():
     #music = MusicCrawler("/home/svetlio/Documents/programming101/week2")
     music = MusicCrawler("/home/svetlio/Music")
+    music.generate_playlist()
 
 
 if __name__ == '__main__':
