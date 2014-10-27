@@ -41,12 +41,30 @@ def match_teams(course_id, team_size, group_time):
     shuffle(persons)
     for i in range(len(persons)):
         if counter == team_size:
-            print("=========================")
+            print("=" * 20)
             counter = 0
         print (persons[i])
         counter += 1
 
 
-print (list_all_courses())
+def main():
+    command = input("""Hello, you can use one the following commands:
+list_courses - this lists all the courses that are available now.
+match_teams <course_id>, <team_size>, <group_time>\n""")
+    if command == "list_courses":
+        print(list_all_courses())
+    else:
+        command = command.split(" ")
+        try:
+            match_teams(int(command[1]), int(command[2]), int(command[3]))
+        except IndexError:
+            print("WRONG COMMAND!!!")
 
-print (match_teams(4, 3, 2))
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()
