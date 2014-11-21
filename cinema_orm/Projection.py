@@ -1,11 +1,7 @@
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import ForeignKey
-from sqlalchemy import create_engine
 from connection import *
-
 from sqlalchemy.orm import relationship
-
 
 
 class Projection(Base):

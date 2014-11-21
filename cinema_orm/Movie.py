@@ -1,9 +1,5 @@
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float
-from sqlalchemy import create_engine
 from connection import *
-
-
 
 
 class Movie(Base):
