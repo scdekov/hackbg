@@ -45,6 +45,11 @@ class Cinema:
 
     def add_reservation(self, username, projection_id, row, col):
         session.add(Reservation(username=username, projection_id=projection_id, row=row, col=col))
+        session.commit()
+
+    def cancel_reservation(self, name):
+        session.query(Reservation).filter(Reservation.username == name).delete()
+        session.commit()
 
     def show_movies(self):
         all_movies = session.query(Movie).all()
@@ -119,18 +124,38 @@ class Cinema:
 
 def main():
     cinema = Cinema()
-    cinema.add_movie("The Hunger Games: Catching Fire", 7.8)
-    cinema.add_movie("Wreck-It Ralph", 7.9)
-    cinema.add_projection(1, "3D", "11.12.2014", "20:10")
-    cinema.add_projection(2, "2D", "11.12.2014", "20:00")
-    cinema.add_reservation("svetlio", 1, 4, 2)
-    cinema.add_reservation("svet", 2, 3, 3)
-    #cinema.show_movies()
-    cinema.make_reservation("svetlioo", 2)
+    # cinema.add_movie("The Hunger Games: Catching Fire", 7.8)
+    # cinema.add_movie("Wreck-It Ralph", 7.9)
+    # cinema.add_projection(1, "3D", "11.12.2014", "20:10")
+    # cinema.add_projection(2, "2D", "11.12.2014", "20:00")
+    # cinema.add_reservation("svetlio", 1, 4, 2)
+    # cinema.add_reservation("svet", 2, 3, 3)
+    # cinema.show_movies()
+    # cinema.make_reservation("svetlioo", 2)
 
-
-
-
+    while(True):
+        command = input("")
+        command = command.split(" ")
+        if command[0] == "exit":
+            break
+        elif command[0] == "show_movies":
+            cinema.show_movies()
+        elif command[0] == "show_movie_projections":
+            if len(command) > 2:
+                cinema.show_movie_projections(command[1], command[2])
+            else:
+                cinema.show_movie_projections(command[1])
+        elif command[0] == "make_reservation":
+            cinema.make_reservation(command[1], command[2])
+        elif command[0] == "cancel_reservation":
+            cinema.cancel_reservation(command[1])
+        else:
+            print("""List of commands:
+                        show_movies
+                        show_movie_projections <movie_id> <date>(optional)
+                        make_reservation <name> <number_of_tickets>
+                        cancel_reservation <name>
+                        exit""")
 
 
 if __name__ == '__main__':
